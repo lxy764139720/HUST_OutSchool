@@ -238,8 +238,10 @@ def readConfig():
 
 def main():
     url = "https://pass.hust.edu.cn/cas/login?service=http://m.hust.edu.cn/wechat/apps_center.jsp"
-    config = readConfig()
-    # config = os.environ
+    if os.path.exists('./config.json'):
+        config = readConfig()
+    else:
+        config = os.environ
     outSchool = OutSchool(config['USER_ID'], config['PASSWORD'])
     for i in range(4):
         if outSchool.login(url):
@@ -248,6 +250,7 @@ def main():
             break
     else:
         print("连续四次登录失败，需要手动在网页登录一下")
+        raise Exception("连续四次登录失败，需要手动在网页登录一下")
 
 
 if __name__ == '__main__':
