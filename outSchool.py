@@ -242,6 +242,7 @@ def main():
         config = readConfig()
     else:
         config = os.environ
+    print(config)
     outSchool = OutSchool(config['USER_ID'], config['PASSWORD'])
     for i in range(4):
         if outSchool.login(url):
