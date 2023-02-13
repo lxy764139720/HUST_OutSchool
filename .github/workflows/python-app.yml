@@ -29,5 +29,10 @@ jobs:
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: run code
+      env:
+         USER_ID: ${{ secrets.USER_ID }}
+         PASSWORD: ${{ secrets.PASSWORD }}
+         USERNAME: ${{ secrets.USERNAME }}
+         USER_ID_CARD: ${{ secrets.USER_ID_CARD }}
       run: |
         python outSchool.py
