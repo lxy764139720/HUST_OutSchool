@@ -4,10 +4,11 @@
 name: Python application
 
 on:
-   watch:
-      types: started
-   schedule:
-     - cron: '0 22 * * ?'
+  workflow_dispatch:
+  push:
+  schedule:
+    # 06:00 everyday in UTC+8, 22:00 everyday in UTC+0
+  - cron: '0 22 * * ?'
 
 permissions:
   contents: read
